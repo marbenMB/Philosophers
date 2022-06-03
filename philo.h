@@ -8,8 +8,28 @@
 # include <fcntl.h>
 # include <string.h>
 # include <limits.h>
+# include <pthread.h>
 
 //	***********		Structs		*********** :
+typedef struct s_data
+{
+	int		nbr_philo;
+	int		t_die;
+	int		t_eat;
+	int		t_sleep;
+	int		n_meals;
+	int		if_die;
+}	sh_data;
+
+typedef struct s_philo 
+{
+	int				id;
+	pthread_mutex_t	fork;
+	int				last_meal;
+	sh_data			data;
+	struct s_philo	next;
+}	t_philo;
+
 //	***********		Libft Functions	*********** :
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
