@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbenbajj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/04 03:11:01 by mbenbajj          #+#    #+#             */
+/*   Updated: 2022/06/04 03:11:03 by mbenbajj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	print_stc(t_philo *stc)
 {
-		printf("\033[32m* ------------------ *\033[0m\n");
+	printf("\033[32m* ------------------ *\033[0m\n");
 	while (stc)
 	{
 		printf("- ID : %d\n \
@@ -13,16 +25,16 @@ void	print_stc(t_philo *stc)
 				- n_meals : %d\n \
 				- if_die : %d\n \
 				- start : %d\n \n" \
-				,stc->id, stc->data->nbr_philo, stc->data->t_die, \
+				, stc->id, stc->data->nbr_philo, stc->data->t_die, \
 				stc->data->t_eat, stc->data->t_sleep, \
 				stc->data->n_meals, stc->data->if_die, stc->data->t_start);
 		stc = stc->next;
 	}
 }
 
-void	data_init(int ac, char **av, sh_data **data)
+void	data_init(int ac, char **av, t_data **data)
 {
-	(*data) = (sh_data *)malloc(sizeof(sh_data));
+	(*data) = (t_data *)malloc(sizeof(t_data));
 	if (!(*data))
 		exit (EXIT_FAILURE);
 	(*data)->if_die = 0;
@@ -35,7 +47,7 @@ void	data_init(int ac, char **av, sh_data **data)
 	// (*data)->t_start = gettimeofday();	//	start time
 }
 
-void create_table(char **av, t_philo **lst, sh_data *data)
+void	create_table(char **av, t_philo **lst, t_data *data)
 {
 	int	i;
 

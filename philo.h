@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbenbajj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
+/*   Updated: 2022/06/04 03:10:55 by mbenbajj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -21,18 +33,17 @@ typedef struct s_data
 	int		n_meals;
 	int		if_die;
 	int		t_start;
-}	sh_data; 
+}	t_data;
 
-typedef struct s_philo 
+typedef struct s_philo
 {
 	int				id;
 	int				last_meal;
-	sh_data			*data;
+	t_data			*data;
 	pthread_t		thread;
 	pthread_mutex_t	fork;
 	struct s_philo	*next;
 }	t_philo;
-
 
 //	***********		Libft Functions	*********** :
 int		ft_isdigit(int c);
@@ -41,7 +52,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 //	***********		Lists Functions	*********** :
-t_philo	*ft_lstnew(int	id, sh_data *data);
+t_philo	*ft_lstnew(int id, t_data *data);
 t_philo	*ft_lstlast(t_philo *lst);
 void	ft_lstadd_back(t_philo **lst, t_philo *new);
 
@@ -54,7 +65,7 @@ void	check_args(int ac, char **av);
 
 //	***********		Utils Functions	*********** :
 void	print_stc(t_philo *stc);
-void	data_init(int ac, char **av, sh_data **data);
-void 	create_table(char **av, t_philo **lst, sh_data *data);
+void	data_init(int ac, char **av, t_data **data);
+void	create_table(char **av, t_philo **lst, t_data *data);
 
 #endif
