@@ -34,16 +34,19 @@ void	print_stc(t_philo *stc)
 
 void	data_init(int ac, char **av, t_data **data)
 {
+	// long	time;
+
 	(*data) = (t_data *)malloc(sizeof(t_data));
 	if (!(*data))
-		exit (EXIT_FAILURE);
+		return ;
 	(*data)->if_die = 0;
 	(*data)->nbr_philo = ft_atoi(av[1]);
 	(*data)->t_die = ft_atoi(av[2]);
 	(*data)->t_eat = ft_atoi(av[3]);
 	(*data)->t_sleep = ft_atoi(av[4]);
 	if (ac == 6)
-		(*data)->n_meals = ft_atoi(av[5]);
+		(*data)->max_meals = ft_atoi(av[5]);
+	
 	// (*data)->t_start = gettimeofday();	//	start time
 }
 
@@ -54,4 +57,25 @@ void	create_table(char **av, t_philo **lst, t_data *data)
 	i = 0;
 	while (++i <= ft_atoi(av[1]))
 		ft_lstadd_back(lst, ft_lstnew(i, data));
+}
+
+void	routine(void)
+{
+	static int	i;
+
+	printf("\033[35m* -+-> Thread Created : %d*\033[0m\n", ++i);
+}
+
+void	philos_birth(t_philo **philos)
+{
+	t_philo	*head;
+
+	head = (*philos);
+	while (*philos)
+	{
+		if (pthread_create(&(*philos)->thread, NULL, (void *)routine, NULL))
+			return ;
+		(*philos) = (*philos)->next;
+	}
+	*philos = head;
 }

@@ -14,6 +14,7 @@
 # define PHILO_H
 
 //	***********		Includes	*********** :
+# include <libc.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -30,7 +31,8 @@ typedef struct s_data
 	int		t_die;
 	int		t_eat;
 	int		t_sleep;
-	int		n_meals;
+	int		max_meals;
+	int		check_meals;
 	int		if_die;
 	int		t_start;
 }	t_data;
@@ -39,6 +41,7 @@ typedef struct s_philo
 {
 	int				id;
 	int				last_meal;
+	int				n_meals;
 	t_data			*data;
 	pthread_t		thread;
 	pthread_mutex_t	fork;
@@ -67,5 +70,7 @@ void	check_args(int ac, char **av);
 void	print_stc(t_philo *stc);
 void	data_init(int ac, char **av, t_data **data);
 void	create_table(char **av, t_philo **lst, t_data *data);
+void	routine(void);
+void	philos_birth(t_philo **philos);
 
 #endif

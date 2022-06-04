@@ -15,12 +15,16 @@
 t_philo	*ft_lstnew(int id, t_data *data)
 {
 	t_philo	*new;
+	int		ret;
 
 	new = (t_philo *)malloc(sizeof(t_philo));
 	if (!new)
-		exit (EXIT_FAILURE);
+		return (NULL);
 	new->id = id;
 	new->data = data;
+	ret = pthread_mutex_init(&(new->fork), NULL);
+		if (ret != 0)
+			return (NULL);
 	new->next = NULL;
 	return (new);
 }
