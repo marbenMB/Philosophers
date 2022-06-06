@@ -22,13 +22,15 @@ void	print_stc(t_philo *stc)
 				- t_die : %d\n \
 				- t_eat : %d\n \
 				- t_sleep : %d\n \
-				- n_meals : %d\n \
+				- max_meals : %d\n \
 				- if_die : %d\n \
 				- start : %d\n \n" \
 				, stc->id, stc->data->nbr_philo, stc->data->t_die, \
 				stc->data->t_eat, stc->data->t_sleep, \
-				stc->data->n_meals, stc->data->if_die, stc->data->t_start);
+				stc->data->max_meals, stc->data->if_die, stc->data->t_start);
+		// printf("%d\n", stc->data->nbr_philo);
 		stc = stc->next;
+
 	}
 }
 
@@ -46,36 +48,51 @@ void	data_init(int ac, char **av, t_data **data)
 	(*data)->t_sleep = ft_atoi(av[4]);
 	if (ac == 6)
 		(*data)->max_meals = ft_atoi(av[5]);
-	
+	else if (ac == 5)
+		(*data)->max_meals = -1;
+	(*data)->head = NULL;
 	// (*data)->t_start = gettimeofday();	//	start time
 }
 
 void	create_table(char **av, t_philo **lst, t_data *data)
 {
 	int	i;
+	t_philo *node;
 
 	i = 0;
 	while (++i <= ft_atoi(av[1]))
-		ft_lstadd_back(lst, ft_lstnew(i, data));
+	{
+		node = ft_lstnew(i, data);
+		ft_lstadd_back(lst, node);
+		if (i == 1)
+			data->head = node;
+	}
 }
 
-void	routine(void)
+void	routine(void *philos)
 {
-	static int	i;
+	t_philo *back_up;
 
-	printf("\033[35m* -+-> Thread Created : %d*\033[0m\n", ++i);
+	back_up = (t_philo *)philos;
+	while(back_up->data->if_die == 0)
+	{
+		printf("%d this is my id\n", back_up->id);
+		// eating  
+		// sleeping
+		// thinking
+
+	}
 }
 
 void	philos_birth(t_philo **philos)
 {
 	t_philo	*head;
 
-	head = (*philos);
-	while (*philos)
+	head = *philos;
+	while (head)
 	{
-		if (pthread_create(&(*philos)->thread, NULL, (void *)routine, NULL))
+		if (pthread_create(&(head->thread), NULL, (void *)routine, head))
 			return ;
-		(*philos) = (*philos)->next;
+		head = head->next;
 	}
-	*philos = head;
 }

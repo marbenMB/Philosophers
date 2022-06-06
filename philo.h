@@ -35,6 +35,7 @@ typedef struct s_data
 	int		check_meals;
 	int		if_die;
 	int		t_start;
+	struct s_philo *head;
 }	t_data;
 
 typedef struct s_philo
@@ -45,6 +46,7 @@ typedef struct s_philo
 	t_data			*data;
 	pthread_t		thread;
 	pthread_mutex_t	fork;
+	pthread_mutex_t	print;
 	struct s_philo	*next;
 }	t_philo;
 
@@ -70,7 +72,7 @@ void	check_args(int ac, char **av);
 void	print_stc(t_philo *stc);
 void	data_init(int ac, char **av, t_data **data);
 void	create_table(char **av, t_philo **lst, t_data *data);
-void	routine(void);
+void	routine(void *philos);
 void	philos_birth(t_philo **philos);
 
 #endif

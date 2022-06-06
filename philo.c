@@ -12,9 +12,12 @@
 
 #include "philo.h"
 
-// TODO : gettimeofday(); => the starting time
+// TODO : CHEck the head if it is saved rightly
+// TODO : create the routine : eating - thinking - sleeping
+// TODO : put a mutex to be locked the printing function if a philo is died
 // TODO : <int check_meals;> if all philos eats max meals then it equals to 1 ; else 0
-// TODO : create the routine && put a mutex to be locked the printing function if a philo is died
+// TODO : Protect usleep();   
+// TODO : gettimeofday(); => the starting time
 
 int	main(int ac, char **av)
 {
@@ -33,8 +36,9 @@ int	main(int ac, char **av)
 	{
 		if (philos->data->if_die)
 			break ;
-		if (philos->data->check_meals)
+		if (philos->data->check_meals == 1)
 			break ;
 	}
+	// usleep(50000);
 	return (0);
 }
