@@ -72,7 +72,11 @@ void	check_args(int ac, char **av);
 void	print_stc(t_philo *stc);
 void	data_init(int ac, char **av, t_data **data);
 void	create_table(char **av, t_philo **lst, t_data *data);
-void	routine(void *philos);
 void	philos_birth(t_philo **philos);
+void	ft_usleep(int time);
+
+//	***********		Routine Functions	*********** :
+void	eating(t_philo *philo);
+void	routine(void *philos);
 
 #endif

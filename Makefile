@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = philo
-SRC = libft.c philo.c ft_check.c error_handling.c philo_utils.c ft_nodes.c
+SRC = libft.c philo.c ft_check.c error_handling.c philo_utils.c ft_nodes.c ft_routine.c
 OBJ = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror -pthread
 

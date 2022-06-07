@@ -69,21 +69,6 @@ void	create_table(char **av, t_philo **lst, t_data *data)
 	}
 }
 
-void	routine(void *philos)
-{
-	t_philo *back_up;
-
-	back_up = (t_philo *)philos;
-	while(back_up->data->if_die == 0)
-	{
-		printf("%d this is my id\n", back_up->id);
-		// eating  
-		// sleeping
-		// thinking
-
-	}
-}
-
 void	philos_birth(t_philo **philos)
 {
 	t_philo	*head;
@@ -95,4 +80,12 @@ void	philos_birth(t_philo **philos)
 			return ;
 		head = head->next;
 	}
+}
+
+void	ft_usleep(int time)
+{
+	long	max;
+
+	max = time * 1000;
+	usleep(max);
 }
