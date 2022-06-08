@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbenbajj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/04 03:10:55 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/08 10:19:22 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@
 //	***********		Structs		*********** :
 typedef struct s_data
 {
-	int		nbr_philo;
-	int		t_die;
-	int		t_eat;
-	int		t_sleep;
-	int		max_meals;
-	int		check_meals;
-	int		if_die;
-	long	t_start;
-	int		satiety;
-	struct s_philo *head;
+	int				nbr_philo;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				max_meals;
+	int				check_meals;
+	int				if_die;
+	long			t_start;
+	int				satiety;
+	struct s_philo	*head;
 }	t_data;
 
 typedef struct s_philo
@@ -52,12 +52,12 @@ typedef struct s_philo
 }	t_philo;
 
 //	***********		Libft Functions	*********** :
-size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
+size_t	ft_strlen(const char *s);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
@@ -68,8 +68,8 @@ t_philo	*ft_lstlast(t_philo *lst);
 void	ft_lstadd_back(t_philo **lst, t_philo *new);
 
 //	***********		Error Functions	*********** :
-int	error_usage(void);
-int	error_arg(char *arg);
+int		error_usage(void);
+int		error_arg(char *arg);
 
 //	***********		Check Functions	*********** :
 int		check_args(int ac, char **av);

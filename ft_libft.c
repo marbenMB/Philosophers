@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_libft.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbenbajj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 15:48:41 by mbenbajj          #+#    #+#             */
-/*   Updated: 2021/11/10 22:36:22 by mbenbajj         ###   ########.fr       */
+/*   Created: 2022/06/08 10:13:58 by mbenbajj          #+#    #+#             */
+/*   Updated: 2022/06/08 10:17:01 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = -1;
+	if (!s)
+		return (0);
+	while (s[++i])
+		;
+	return (i);
+}
 
 void	*ft_calloc(size_t count, size_t size)
 {

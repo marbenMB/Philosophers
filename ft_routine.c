@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_routine.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/08 10:14:29 by mbenbajj          #+#    #+#             */
+/*   Updated: 2022/06/08 10:15:25 by mbenbajj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	eating(t_philo *philo)
@@ -33,22 +45,17 @@ void	thinking(t_philo *philo)
 
 void	routine(void *philos)
 {
-	t_philo *back_up;
+	t_philo	*back_up;
 
 	back_up = (t_philo *)philos;
 	if (back_up->id % 2 == 0)
 		usleep(500);
-	while(back_up->data->if_die == 0)
+	while (back_up->data->if_die == 0)
 	{
-		// eating  
 		eating(back_up);
 		if (back_up->data->satiety == back_up->data->nbr_philo)
 			break ;
-		// sleeping
 		sleeping(back_up);
-		// thinking
 		thinking(back_up);
-		// checking satiety
 	}
-
 }

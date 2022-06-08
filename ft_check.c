@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int		check_args(int ac, char **av)
+int	check_args(int ac, char **av)
 {
 	int		i[2];
 	char	*arg;

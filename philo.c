@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbenbajj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:47 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/04 03:10:49 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/08 10:18:20 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,9 @@ int	main(int ac, char **av)
 			return (1);
 	if (check_args(ac, av))
 		return (1);
-	ft_putendl_fd("\033[32m* +> CHECK DONE *\033[0m", 2);
 	if (data_init(ac, av, &data))
 		return (1);
 	create_table(av, &philos, data);
-	ft_putendl_fd("\033[32m* +> TABLE CREATED *\033[0m", 2);
 	philos_birth(&philos);
 	while (1)
 	{
@@ -43,8 +41,6 @@ int	main(int ac, char **av)
 			print_stc(philos->data->head);
 			break ;
 		}
-		
 	}
-	// usleep(50000);
 	return (0);
 }

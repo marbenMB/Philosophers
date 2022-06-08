@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbenbajj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:38 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/04 03:10:40 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/08 10:16:55 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = -1;
-	if (!s)
-		return (0);
-	while (s[++i])
-		;
-	return (i);
-}
 
 int	ft_isdigit(int c)
 {
