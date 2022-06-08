@@ -52,27 +52,33 @@ typedef struct s_philo
 }	t_philo;
 
 //	***********		Libft Functions	*********** :
+size_t	ft_strlen(const char *s);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char	*ft_strtrim(char const *s1, char const *set);
 //	***********		Lists Functions	*********** :
 t_philo	*ft_lstnew(int id, t_data *data);
 t_philo	*ft_lstlast(t_philo *lst);
 void	ft_lstadd_back(t_philo **lst, t_philo *new);
 
 //	***********		Error Functions	*********** :
-void	error_usage(void);
-void	error_arg(void);
+int	error_usage(void);
+int	error_arg(char *arg);
 
 //	***********		Check Functions	*********** :
-void	check_args(int ac, char **av);
+int		check_args(int ac, char **av);
 void	check_satiety(t_philo *philo);
 
 //	***********		Utils Functions	*********** :
 void	print_stc(t_philo *stc);
-void	data_init(int ac, char **av, t_data **data);
+int		null_arg(t_data *data);
+int		data_init(int ac, char **av, t_data **data);
 void	create_table(char **av, t_philo **lst, t_data *data);
 void	philos_birth(t_philo **philos);
 void	ft_usleep(int time);

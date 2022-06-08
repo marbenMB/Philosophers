@@ -12,14 +12,15 @@
 
 #include "philo.h"
 
-void	error_usage(void)
+int	error_usage(void)
 {
 	ft_putendl_fd("\033[33m* USAGE ERROR *\033[0m", 2);
-	exit (EXIT_FAILURE);
+	return (1);
 }
 
-void	error_arg(void)
+int	error_arg(char *arg)
 {
+	free(arg);
 	ft_putendl_fd("\033[33m* ARG ERROR *\033[0m", 2);
-	exit (EXIT_FAILURE);
+	return (1);
 }

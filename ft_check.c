@@ -12,22 +12,26 @@
 
 #include "philo.h"
 
-void	check_args(int ac, char **av)
+int		check_args(int ac, char **av)
 {
-	int	i[2];
+	int		i[2];
+	char	*arg;
 
 	i[0] = 0;
 	while (++i[0] < ac)
 	{
+		arg = ft_strtrim(av[i[0]], " ");
 		i[1] = -1;
-		while (av[i[0]][++i[1]] == ' ')
-			;
-		if (!av[i[0]][i[1]])
-			error_arg();
-		while (av[i[0]][++i[1]])
-			if (!ft_isdigit(av[i[0]][i[1]]))
-				error_arg();
+		if (!arg[++i[1]])
+			if (error_arg(arg))
+				return (1);
+		while (arg[i[1]])
+			if (!ft_isdigit(arg[i[1]++]))
+				if (error_arg(arg))
+					return (1);
+		free(arg);
 	}
+	return (0);
 }
 
 void	check_satiety(t_philo *philo)

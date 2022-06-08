@@ -34,13 +34,20 @@ void	print_stc(t_philo *stc)
 	}
 }
 
-void	data_init(int ac, char **av, t_data **data)
+int	null_arg(t_data *data)
+{
+	if (!data->nbr_philo || !data->t_die || !data->t_eat || !data->t_sleep || data->max_meals == 0)
+		return (1);
+	return (0);
+}
+
+int	data_init(int ac, char **av, t_data **data)
 {
 	// long	time;
 
 	(*data) = (t_data *)malloc(sizeof(t_data));
 	if (!(*data))
-		return ;
+		return (1);
 	(*data)->if_die = 0;
 	(*data)->nbr_philo = ft_atoi(av[1]);
 	(*data)->t_die = ft_atoi(av[2]);
@@ -52,7 +59,13 @@ void	data_init(int ac, char **av, t_data **data)
 		(*data)->max_meals = -1;
 	(*data)->satiety = 0;
 	(*data)->head = NULL;
+	if (null_arg(*data))
+	{
+		free(*data);
+		return (1);
+	}
 	// (*data)->t_start = gettimeofday();	//	start time
+	return (0);
 }
 
 void	create_table(char **av, t_philo **lst, t_data *data)

@@ -23,10 +23,13 @@ int	main(int ac, char **av)
 	t_data	*data;
 
 	if (ac < 5 || ac > 6)
-		error_usage();
-	check_args(ac, av);
+		if (error_usage())
+			return (1);
+	if (check_args(ac, av))
+		return (1);
 	ft_putendl_fd("\033[32m* +> CHECK DONE *\033[0m", 2);
-	data_init(ac, av, &data);
+	if (data_init(ac, av, &data))
+		return (1);
 	create_table(av, &philos, data);
 	ft_putendl_fd("\033[32m* +> TABLE CREATED *\033[0m", 2);
 	philos_birth(&philos);
