@@ -17,18 +17,18 @@ void	print_stc(t_philo *stc)
 	printf("\033[32m* ------------------ *\033[0m\n");
 	while (stc)
 	{
-		printf("- ID : %d\n \
-				- n_philo : %d\n \
-				- t_die : %d\n \
-				- t_eat : %d\n \
-				- t_sleep : %d\n \
-				- max_meals : %d\n \
-				- if_die : %d\n \
-				- start : %d\n \n" \
-				, stc->id, stc->data->nbr_philo, stc->data->t_die, \
-				stc->data->t_eat, stc->data->t_sleep, \
-				stc->data->max_meals, stc->data->if_die, stc->data->t_start);
-		// printf("%d\n", stc->data->nbr_philo);
+		// printf("- ID : %d\n \
+		// 		- n_philo : %d\n \
+		// 		- t_die : %d\n \
+		// 		- t_eat : %d\n \
+		// 		- t_sleep : %d\n \
+		// 		- max_meals : %d\n \
+		// 		- if_die : %d\n \
+		// 		- start : %d\n \n" \
+		// 		, stc->id, stc->data->nbr_philo, stc->data->t_die, \
+		// 		stc->data->t_eat, stc->data->t_sleep, \
+		// 		stc->data->max_meals, stc->data->if_die, stc->data->t_start);
+		printf("[%d] -> %d\n", stc->id, stc->n_meals);
 		stc = stc->next;
 
 	}
@@ -50,6 +50,7 @@ void	data_init(int ac, char **av, t_data **data)
 		(*data)->max_meals = ft_atoi(av[5]);
 	else if (ac == 5)
 		(*data)->max_meals = -1;
+	(*data)->satiety = 0;
 	(*data)->head = NULL;
 	// (*data)->t_start = gettimeofday();	//	start time
 }

@@ -12,10 +12,8 @@
 
 #include "philo.h"
 
-// TODO : CHEck the head if it is saved rightly
-// TODO : create the routine : eating - thinking - sleeping
+// TODO : Parsing cases : test with 0 and negation
 // TODO : put a mutex to be locked the printing function if a philo is died
-// TODO : <int check_meals;> if all philos eats max meals then it equals to 1 ; else 0
 // TODO : Protect usleep();   
 // TODO : gettimeofday(); => the starting time
 
@@ -36,8 +34,13 @@ int	main(int ac, char **av)
 	{
 		if (philos->data->if_die)
 			break ;
-		if (philos->data->check_meals == 1)
+		if (philos->data->satiety >= philos->data->nbr_philo)
+		{
+			philos->data->if_die = 1;
+			print_stc(philos->data->head);
 			break ;
+		}
+		
 	}
 	// usleep(50000);
 	return (0);

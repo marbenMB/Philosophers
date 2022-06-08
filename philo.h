@@ -34,14 +34,15 @@ typedef struct s_data
 	int		max_meals;
 	int		check_meals;
 	int		if_die;
-	int		t_start;
+	long	t_start;
+	int		satiety;
 	struct s_philo *head;
 }	t_data;
 
 typedef struct s_philo
 {
 	int				id;
-	int				last_meal;
+	long			last_meal;
 	int				n_meals;
 	t_data			*data;
 	pthread_t		thread;
@@ -67,6 +68,7 @@ void	error_arg(void);
 
 //	***********		Check Functions	*********** :
 void	check_args(int ac, char **av);
+void	check_satiety(t_philo *philo);
 
 //	***********		Utils Functions	*********** :
 void	print_stc(t_philo *stc);

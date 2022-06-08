@@ -29,3 +29,9 @@ void	check_args(int ac, char **av)
 				error_arg();
 	}
 }
+
+void	check_satiety(t_philo *philo)
+{
+	if (philo->n_meals == philo->data->max_meals)
+		philo->data->satiety++;
+}
