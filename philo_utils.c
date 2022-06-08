@@ -3,35 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbenbajj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:11:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/04 03:11:03 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:07:30 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	print_stc(t_philo *stc)
+void	print_stamp(char *str, long time, t_philo *philo)
 {
-	printf("\033[32m* ------------------ *\033[0m\n");
-	while (stc)
-	{
-		// printf("- ID : %d\n \
-		// 		- n_philo : %d\n \
-		// 		- t_die : %d\n \
-		// 		- t_eat : %d\n \
-		// 		- t_sleep : %d\n \
-		// 		- max_meals : %d\n \
-		// 		- if_die : %d\n \
-		// 		- start : %d\n \n" \
-		// 		, stc->id, stc->data->nbr_philo, stc->data->t_die, \
-		// 		stc->data->t_eat, stc->data->t_sleep, \
-		// 		stc->data->max_meals, stc->data->if_die, stc->data->t_start);
-		printf("[%d] -> %d\n", stc->id, stc->n_meals);
-		stc = stc->next;
-
-	}
+	pthread_mutex_lock(&philo->print);
+	printf(str, time, philo->id);
+	pthread_mutex_unlock(&philo->print);
 }
 
 int	null_arg(t_data *data)

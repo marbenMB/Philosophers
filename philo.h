@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/08 10:19:22 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/08 12:11:44 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # include <sys/time.h>
 # include <pthread.h>
 
+//	***********		STAMPS MACROS		*********** :
+# define FORK_STMP "%ld -> %d has taken a fork\n"
+# define EAT_STMP "%ld -> %d is eating\n"
+# define SLEEP_STMP "%ld -> %d is sleeping\n"
+# define THINK_STMP "%ld -> %d is thinking\n"
+# define DIE_STMP "%ld -> %d died\n"
 //	***********		Structs		*********** :
 typedef struct s_data
 {
@@ -76,7 +82,7 @@ int		check_args(int ac, char **av);
 void	check_satiety(t_philo *philo);
 
 //	***********		Utils Functions	*********** :
-void	print_stc(t_philo *stc);
+void	print_stamp(char *str, long time, t_philo *philo);
 int		null_arg(t_data *data);
 int		data_init(int ac, char **av, t_data **data);
 void	create_table(char **av, t_philo **lst, t_data *data);
