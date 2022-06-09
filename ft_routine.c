@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 10:14:29 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/09 08:12:28 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:56:17 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ void	eating(t_philo *philo)
 	print_stamp(EAT_STMP, ft_gettime() - philo->data->t_start, philo);
 	philo->n_meals++;
 	check_satiety(philo);
+	philo->last_meal = ft_gettime();
 	ft_usleep(philo->data->t_eat);
+	pthread_mutex_unlock(&philo->fork);
 	if (philo->next)
 		pthread_mutex_unlock(&philo->next->fork);
 	else
 		pthread_mutex_unlock(&philo->data->head->fork);
-	pthread_mutex_unlock(&philo->fork);
 }
 
 void	sleeping(t_philo *philo)
@@ -52,6 +53,11 @@ void	routine(void *philos)
 		usleep(500);
 	while (back_up->data->if_die == 0)
 	{
+		// if ((ft_gettime() - back_up->data->t_start) - back_up->last_meal >= back_up->data->t_die)
+		// {
+		// 	back_up->data->if_die = 1;
+		// 	print_stamp(DIE_STMP, ft_gettime() - back_up->data->t_start, back_up);	
+		// }
 		eating(back_up);
 		if (back_up->data->satiety == back_up->data->nbr_philo)
 			break ;

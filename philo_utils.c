@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:11:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/09 08:10:10 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:55:20 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ void	print_stamp(char *str, long time, t_philo *philo)
 {
 	if (philo->data->if_die)
 	{
-		pthread_mutex_lock(&philo->print);
+		pthread_mutex_lock(&philo->data->print);
 		printf(str, time, philo->id);
 	}
-	pthread_mutex_lock(&philo->print);
-	printf(str, time, philo->id);
-	pthread_mutex_unlock(&philo->print);
+	else
+	{
+		pthread_mutex_lock(&philo->data->print);
+		printf(str, time, philo->id);
+		pthread_mutex_unlock(&philo->data->print);
+	}
 }
 
 long	ft_gettime(void)
@@ -64,6 +67,8 @@ int	data_init(int ac, char **av, t_data **data)
 		return (1);
 	}
 	(*data)->t_start = 0;
+	if (pthread_mutex_init(&((*data)->print), NULL))
+		return (1);
 	return (0);
 }
 
@@ -92,7 +97,7 @@ void	philos_birth(t_philo **philos)
 	{
 		if (pthread_create(&(head->thread), NULL, (void *)routine, head))
 			return ;
-		(*philos)->last_meal = ft_gettime();
+		head->last_meal = ft_gettime();
 		head = head->next;
 	}
 }

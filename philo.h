@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/09 06:04:28 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:42:35 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_data
 	long			t_start;
 	int				satiety;
 	struct s_philo	*head;
+	pthread_mutex_t	print;
 }	t_data;
 
 typedef struct s_philo
@@ -53,7 +54,6 @@ typedef struct s_philo
 	t_data			*data;
 	pthread_t		thread;
 	pthread_mutex_t	fork;
-	pthread_mutex_t	print;
 	struct s_philo	*next;
 }	t_philo;
 

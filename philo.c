@@ -6,12 +6,13 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:47 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/09 08:08:01 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/09 23:58:34 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+// TODO : Handle the 0 cases
 // TODO : ft_gettime();
 // TODO : gettimeofday(); => the starting time
 // TODO : Protect usleep();   
@@ -33,6 +34,11 @@ int	main(int ac, char **av)
 	philos_birth(&philos);
 	while (1)
 	{
+		if ((ft_gettime()) - philos->last_meal >= philos->data->t_die)
+		{
+			philos->data->if_die = 1;
+			print_stamp(DIE_STMP, ft_gettime() - philos->data->t_start, philos);	
+		}
 		if (philos->data->if_die)
 			break ;
 		if (philos->data->satiety >= philos->data->nbr_philo)
@@ -40,6 +46,11 @@ int	main(int ac, char **av)
 			philos->data->if_die = 1;
 			break ;
 		}
+		if (philos->next)
+			philos = philos->next;
+		else
+			philos = philos->data->head;
+		usleep(100);
 	}
 	return (0);
 }
