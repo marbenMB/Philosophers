@@ -6,16 +6,16 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:47 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/08 12:11:10 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/09 08:08:01 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// TODO : Parsing cases : test with 0 and negation
-// TODO : put a mutex to be locked the printing function if a philo is died
-// TODO : Protect usleep();   
+// TODO : ft_gettime();
 // TODO : gettimeofday(); => the starting time
+// TODO : Protect usleep();   
+// TODO : put a mutex to be locked the printing function if a philo is died
 
 int	main(int ac, char **av)
 {
@@ -38,7 +38,6 @@ int	main(int ac, char **av)
 		if (philos->data->satiety >= philos->data->nbr_philo)
 		{
 			philos->data->if_die = 1;
-			// print_stc(philos->data->head);
 			break ;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:11:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/08 12:07:30 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/09 08:10:10 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,36 @@
 
 void	print_stamp(char *str, long time, t_philo *philo)
 {
+	if (philo->data->if_die)
+	{
+		pthread_mutex_lock(&philo->print);
+		printf(str, time, philo->id);
+	}
 	pthread_mutex_lock(&philo->print);
 	printf(str, time, philo->id);
 	pthread_mutex_unlock(&philo->print);
 }
 
+long	ft_gettime(void)
+{
+	struct timeval	tp;
+	long			time;
+
+	gettimeofday(&tp, NULL);
+	time = tp.tv_sec * 1000 + tp.tv_usec / 1000;
+	return (time);
+}
+
 int	null_arg(t_data *data)
 {
-	if (!data->nbr_philo || !data->t_die || !data->t_eat || !data->t_sleep || data->max_meals == 0)
+	if (!data->nbr_philo || !data->t_die || !data->t_eat \
+			|| !data->t_sleep || data->max_meals == 0)
 		return (1);
 	return (0);
 }
 
 int	data_init(int ac, char **av, t_data **data)
 {
-	// long	time;
-
 	(*data) = (t_data *)malloc(sizeof(t_data));
 	if (!(*data))
 		return (1);
@@ -49,14 +63,14 @@ int	data_init(int ac, char **av, t_data **data)
 		free(*data);
 		return (1);
 	}
-	// (*data)->t_start = gettimeofday();	//	start time
+	(*data)->t_start = 0;
 	return (0);
 }
 
 void	create_table(char **av, t_philo **lst, t_data *data)
 {
-	int	i;
-	t_philo *node;
+	int		i;
+	t_philo	*node;
 
 	i = 0;
 	while (++i <= ft_atoi(av[1]))
@@ -73,10 +87,12 @@ void	philos_birth(t_philo **philos)
 	t_philo	*head;
 
 	head = *philos;
+	(*philos)->data->t_start = ft_gettime();
 	while (head)
 	{
 		if (pthread_create(&(head->thread), NULL, (void *)routine, head))
 			return ;
+		(*philos)->last_meal = ft_gettime();
 		head = head->next;
 	}
 }

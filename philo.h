@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/08 12:11:44 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/09 06:04:28 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	check_satiety(t_philo *philo);
 
 //	***********		Utils Functions	*********** :
 void	print_stamp(char *str, long time, t_philo *philo);
+long	ft_gettime(void);
 int		null_arg(t_data *data);
 int		data_init(int ac, char **av, t_data **data);
 void	create_table(char **av, t_philo **lst, t_data *data);

@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 10:14:29 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/08 12:10:46 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/09 08:12:28 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,13 @@
 void	eating(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->fork);
-	// printf("%d has taken a right fork\n", philo->id);
-	print_stamp(FORK_STMP, 0, philo);
+	print_stamp(FORK_STMP, ft_gettime() - philo->data->t_start, philo);
 	if (philo->next)
 		pthread_mutex_lock(&philo->next->fork);
 	else
 		pthread_mutex_lock(&philo->data->head->fork);
-	// printf("%d has taken a left fork\n", philo->id);
-	print_stamp(FORK_STMP, 0, philo);
-	// printf("%d is eating\n", philo->id);
-	print_stamp(EAT_STMP, 0, philo);
+	print_stamp(FORK_STMP, ft_gettime() - philo->data->t_start, philo);
+	print_stamp(EAT_STMP, ft_gettime() - philo->data->t_start, philo);
 	philo->n_meals++;
 	check_satiety(philo);
 	ft_usleep(philo->data->t_eat);
@@ -37,15 +34,13 @@ void	eating(t_philo *philo)
 
 void	sleeping(t_philo *philo)
 {
-	// printf("%d is sleeping\n", philo->id);
-	print_stamp(SLEEP_STMP, 0, philo);
+	print_stamp(SLEEP_STMP, ft_gettime() - philo->data->t_start, philo);
 	ft_usleep(philo->data->t_sleep);
 }
 
 void	thinking(t_philo *philo)
 {
-	// printf("%d is thinking\n", philo->id);
-	print_stamp(THINK_STMP, 0, philo);
+	print_stamp(THINK_STMP, ft_gettime() - philo->data->t_start, philo);
 }
 
 void	routine(void *philos)
