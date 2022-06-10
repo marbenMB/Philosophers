@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/09 23:42:35 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/10 16:14:51 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,16 @@ void	check_satiety(t_philo *philo);
 void	print_stamp(char *str, long time, t_philo *philo);
 long	ft_gettime(void);
 int		null_arg(t_data *data);
+void	ft_usleep(int time);
+//	----
 int		data_init(int ac, char **av, t_data **data);
 void	create_table(char **av, t_philo **lst, t_data *data);
 void	philos_birth(t_philo **philos);
-void	ft_usleep(int time);
 
 //	***********		Routine Functions	*********** :
 void	eating(t_philo *philo);
+void	sleeping(t_philo *philo);
+void	thinking(t_philo *philo);
 void	routine(void *philos);
 
 #endif
