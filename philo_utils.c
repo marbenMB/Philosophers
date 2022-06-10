@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:11:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/09 23:55:20 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/10 00:05:36 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,13 @@ void	philos_birth(t_philo **philos)
 
 void	ft_usleep(int time)
 {
-	long	max;
+	// long	max;
+	long	start;
 
-	max = time * 1000;
-	usleep(max);
+	start = ft_gettime();
+
+	while (ft_gettime() - start <= time)
+		usleep(100);
+	// max = time * 1000;
+	// usleep(max);
 }

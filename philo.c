@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:47 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/09 23:58:34 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/10 00:01:08 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ int	main(int ac, char **av)
 		{
 			philos->data->if_die = 1;
 			print_stamp(DIE_STMP, ft_gettime() - philos->data->t_start, philos);	
-		}
-		if (philos->data->if_die)
 			break ;
+		}
 		if (philos->data->satiety >= philos->data->nbr_philo)
 		{
 			philos->data->if_die = 1;
@@ -50,7 +49,7 @@ int	main(int ac, char **av)
 			philos = philos->next;
 		else
 			philos = philos->data->head;
-		usleep(100);
+		usleep(800);
 	}
 	return (0);
 }
