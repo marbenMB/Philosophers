@@ -76,6 +76,7 @@ void	ft_lstadd_back(t_philo **lst, t_philo *new);
 //	***********		Error Functions	*********** :
 int		error_usage(void);
 int		error_arg(char *arg);
+void	error_null(void);
 
 //	***********		Check Functions	*********** :
 int		check_args(int ac, char **av);

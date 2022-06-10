@@ -41,7 +41,10 @@ int	null_arg(t_data *data)
 {
 	if (!data->nbr_philo || !data->t_die || !data->t_eat \
 			|| !data->t_sleep || data->max_meals == 0)
+	{
+		error_null();
 		return (1);
+	}
 	return (0);
 }
 

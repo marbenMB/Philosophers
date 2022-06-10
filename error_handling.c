@@ -24,3 +24,8 @@ int	error_arg(char *arg)
 	ft_putendl_fd("\033[33m* ARG ERROR *\033[0m", 2);
 	return (1);
 }
+
+void	error_null(void)
+{
+	ft_putendl_fd("\033[31m* NULL ARG *\033[0m", 2);
+}
