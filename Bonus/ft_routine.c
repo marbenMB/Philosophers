@@ -49,6 +49,8 @@ void	routine(void *philos)
 	t_philo	*back_up;
 
 	back_up = (t_philo *)philos;
+	pthread_create(&back_up->thread, NULL, (void *)check_satiety, back_up);
+
 	if (back_up->id % 2 == 0)
 		usleep(500);
 	while (back_up->data->if_die == 0)
@@ -59,4 +61,7 @@ void	routine(void *philos)
 		sleeping(back_up);
 		thinking(back_up);
 	}
+	if (back_up->data->satiety == 1)
+		exit(1);
+	exit(0);
 }

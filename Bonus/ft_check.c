@@ -34,8 +34,33 @@ int	check_args(int ac, char **av)
 	return (0);
 }
 
-void	check_satiety(t_philo *philo)
+void	check_satiety(void *philo)
 {
-	if (philo->n_meals == philo->data->max_meals)
-		philo->data->satiety++;
+	t_philo	*node;
+
+	node = (t_philo *)philo;
+	while (1)
+	{
+		if (node->n_meals == node->data->max_meals)
+		{
+			node->data->satiety = 1;
+			node->data->if_die = 1;
+			return ;
+		}
+		// if ()
+		
+
+	}
 }
+
+// while (philo)
+// {
+
+// // waitpid(-1, &r, 0);
+// if (r == 0)
+// {
+// 	while ()
+// 	kill()
+// }
+// philo = philo->next;
+// }
