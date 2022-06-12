@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/10 16:14:51 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/12 11:03:00 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_data
 	int				t_eat;
 	int				t_sleep;
 	int				max_meals;
-	int				check_meals;
 	int				if_die;
 	long			t_start;
 	int				satiety;
