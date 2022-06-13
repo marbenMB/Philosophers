@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:04:12 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 12:13:28 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:08:37 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,18 @@ void	ft_usleep(int time)
 		usleep(100);
 }
 
-void	free_str(t_philo *philos)
+void	free_stc(t_philo *philos)
 {
 	t_philo	*back_up;
 
 	while (philos)
 	{
 		back_up = philos->next;
-			
+		pthread_mutex_destroy(&philos->data->print);
+		pthread_mutex_destroy(&philos->fork);
+		free(philos);
 		philos = back_up;
+		if (philos && !philos->next)
+			free(philos->data);
 	}
 }
