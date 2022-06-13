@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 11:07:45 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:15:11 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <limits.h>
 # include <sys/time.h>
 # include <pthread.h>
+# include <semaphore.h>
 
 //	***********		STAMPS MACROS		*********** :
 # define FORK_STMP "%ld -> %d has taken a fork\n"
@@ -42,7 +43,8 @@ typedef struct s_data
 	long			t_start;
 	int				satiety;
 	struct s_philo	*head;
-	pthread_mutex_t	print;
+	sem_t			*fork;
+	sem_t			*print;
 }	t_data;
 
 typedef struct s_philo
@@ -53,7 +55,6 @@ typedef struct s_philo
 	int				n_meals;
 	t_data			*data;
 	pthread_t		thread;
-	pthread_mutex_t	fork;
 	struct s_philo	*next;
 }	t_philo;
 

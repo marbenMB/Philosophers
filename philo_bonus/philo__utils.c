@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:04:12 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 13:46:30 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:58:17 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	print_stamp(char *str, long time, t_philo *philo)
 {
 	if (philo->data->if_die)
 	{
-		pthread_mutex_lock(&philo->data->print);
+		sem_wait(philo->data->print);
 		printf(str, time, philo->id);
 	}
 	else
 	{
-		pthread_mutex_lock(&philo->data->print);
+		sem_wait(philo->data->print);
 		printf(str, time, philo->id);
-		pthread_mutex_unlock(&philo->data->print);
+		sem_post(philo->data->print);
 	}
 }
 

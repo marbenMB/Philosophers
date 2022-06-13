@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 10:14:29 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 11:06:27 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:14:50 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,16 @@
 
 void	eating(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->fork);
+	sem_wait(philo->data->fork);
 	print_stamp(FORK_STMP, ft_gettime() - philo->data->t_start, philo);
-	// if (philo->next)
-	// 	pthread_mutex_lock(&philo->next->fork);
-	// else
-	// 	pthread_mutex_lock(&philo->data->head->fork);
+	sem_wait(philo->data->fork);
 	print_stamp(FORK_STMP, ft_gettime() - philo->data->t_start, philo);
 	print_stamp(EAT_STMP, ft_gettime() - philo->data->t_start, philo);
 	philo->n_meals++;
-	check_satiety(philo);
 	philo->last_meal = ft_gettime();
 	ft_usleep(philo->data->t_eat);
-	pthread_mutex_unlock(&philo->fork);
-	// if (philo->next)
-	// 	pthread_mutex_unlock(&philo->next->fork);
-	// else
-	// 	pthread_mutex_unlock(&philo->data->head->fork);
+	sem_post(philo->data->fork);
+	sem_post(philo->data->fork);
 }
 
 void	sleeping(t_philo *philo)

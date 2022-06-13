@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:47 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 14:14:30 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 14:17:38 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	main(int ac, char **av)
 	create_table(av, &philos, data);
 	philos_birth(&philos);
 	loop(philos);
-	printf("++++++++++++ %d\n", philos->id); // ************
 	free_stc(philos);
 	return (0);
 }

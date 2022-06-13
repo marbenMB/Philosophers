@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:11:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 11:07:57 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:15:24 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ int	data_init(int ac, char **av, t_data **data)
 		return (1);
 	}
 	(*data)->t_start = 0;
-	if (pthread_mutex_init(&((*data)->print), NULL))
-		return (1);
+	sem_unlink("fork");
+	sem_unlink("print");
+	(*data)->fork = sem_open("fork", O_CREAT, 666, (*data)->nbr_philo);
+	(*data)->print = sem_open("print", O_CREAT, 666, 1);
 	return (0);
 }
 

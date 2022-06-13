@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:23 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 10:56:24 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 20:14:35 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	check_satiety(void *philo)
 			node->data->satiety = 1;
 			return ;
 		}
-		if (ft_gettime() - node->last_meal >= node->data->t_die)
+		if ((ft_gettime()) - node->last_meal >= node->data->t_die)
 		{
 			node->data->if_die = 1;
-			return ;
+			exit(0);
 		}
 	}
 }

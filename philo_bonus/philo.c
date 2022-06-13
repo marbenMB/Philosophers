@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:47 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 11:41:19 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 18:58:34 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 void	loop(t_philo *philos)
 {
-	int r;
-	t_philo *node;
+	int		r;
+	t_philo	*node;
 
 	r = 0;
 	node = philos;
@@ -32,11 +32,16 @@ void	loop(t_philo *philos)
 				kill(node->pid, SIGKILL);
 				node = node->next;
 			}
+			sem_close(node->data->fork);
+			sem_close(node->data->print);
+			sem_unlink("fork");
 			exit (0);
 		}
 		else
 			philos = philos->next;
 	}
+	sem_close(node->data->fork);
+	sem_close(node->data->print);
 }
 
 int	main(int ac, char **av)
