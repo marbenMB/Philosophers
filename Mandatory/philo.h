@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/12 11:03:00 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 12:50:12 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	print_stamp(char *str, long time, t_philo *philo);
 long	ft_gettime(void);
 int		null_arg(t_data *data);
 void	ft_usleep(int time);
+void	free_str(t_philo *philos);
 //	----
 int		data_init(int ac, char **av, t_data **data);
 void	create_table(char **av, t_philo **lst, t_data *data);

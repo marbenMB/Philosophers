@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:04:12 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/10 16:06:01 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 12:13:28 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,16 @@ void	ft_usleep(int time)
 	start = ft_gettime();
 	while (ft_gettime() - start <= time)
 		usleep(100);
+}
+
+void	free_str(t_philo *philos)
+{
+	t_philo	*back_up;
+
+	while (philos)
+	{
+		back_up = philos->next;
+			
+		philos = back_up;
+	}
 }
