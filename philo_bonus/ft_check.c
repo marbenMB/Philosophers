@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbenbajj <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:23 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/04 03:10:24 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 10:56:24 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,13 @@ void	check_satiety(void *philo)
 		if (node->n_meals == node->data->max_meals)
 		{
 			node->data->satiety = 1;
+			return ;
+		}
+		if (ft_gettime() - node->last_meal >= node->data->t_die)
+		{
 			node->data->if_die = 1;
 			return ;
 		}
-		// if ()
-		
-
 	}
 }
 

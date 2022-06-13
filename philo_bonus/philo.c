@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:47 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/12 11:22:32 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 11:41:19 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,25 @@
 
 void	loop(t_philo *philos)
 {
-	while (1)
+	int r;
+	t_philo *node;
+
+	r = 0;
+	node = philos;
+	while (philos)
 	{
-		if ((ft_gettime()) - philos->last_meal >= philos->data->t_die)
+		waitpid(-1, &r, 0);
+		if (r == 0)
 		{
-			philos->data->if_die = 1;
-			print_stamp(DIE_STMP, ft_gettime() - philos->data->t_start, philos);
-			break ;
+			while (node)
+			{
+				kill(node->pid, SIGKILL);
+				node = node->next;
+			}
+			exit (0);
 		}
-		if (philos->data->satiety >= philos->data->nbr_philo)
-		{
-			philos->data->if_die = 1;
-			break ;
-		}
-		if (philos->next)
-			philos = philos->next;
 		else
-			philos = philos->data->head;
-		usleep(800);
+			philos = philos->next;
 	}
 }
 

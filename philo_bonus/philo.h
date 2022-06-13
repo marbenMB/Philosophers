@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/12 11:03:00 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 11:07:45 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data
 typedef struct s_philo
 {
 	int				id;
+	int				pid;
 	long			last_meal;
 	int				n_meals;
 	t_data			*data;
@@ -79,7 +80,7 @@ void	error_null(void);
 
 //	***********		Check Functions	*********** :
 int		check_args(int ac, char **av);
-void	check_satiety(t_philo *philo);
+void	check_satiety(void *philo);
 
 //	***********		Utils Functions	*********** :
 void	print_stamp(char *str, long time, t_philo *philo);

@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:11:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/12 11:02:57 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/13 11:07:57 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,15 @@ void	create_table(char **av, t_philo **lst, t_data *data)
 void	philos_birth(t_philo **philos)
 {
 	t_philo	*head;
-	int		id;
 
 	head = *philos;
 	(*philos)->data->t_start = ft_gettime();
 	while (head)
 	{
-		id = fork();
-		if (id < 0)
+		head->pid = fork();
+		if (head->pid < 0)
 			return ;
-		if (id == 0)
+		if (head->pid == 0)
 		{
 			head->last_meal = ft_gettime();
 			routine(head);
