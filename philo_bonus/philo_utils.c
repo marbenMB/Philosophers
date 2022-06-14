@@ -61,7 +61,6 @@ void	philos_birth(t_philo **philos)
 	t_philo	*head;
 
 	head = *philos;
-	(*philos)->data->t_start = ft_gettime();
 	while (head)
 	{
 		head->pid = fork();
@@ -69,6 +68,7 @@ void	philos_birth(t_philo **philos)
 			return ;
 		if (head->pid == 0)
 		{
+			head->data->t_start = ft_gettime();
 			head->last_meal = ft_gettime();
 			routine(head);
 		}

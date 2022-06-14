@@ -82,12 +82,14 @@ void	error_null(void);
 //	***********		Check Functions	*********** :
 int		check_args(int ac, char **av);
 void	check_satiety(void *philo);
+void	ft_exit(int	status, t_philo *lst);
 
 //	***********		Utils Functions	*********** :
 void	print_stamp(char *str, long time, t_philo *philo);
 long	ft_gettime(void);
 int		null_arg(t_data *data);
 void	ft_usleep(int time);
+void	free_stc(t_philo *philos);
 //	----
 int		data_init(int ac, char **av, t_data **data);
 void	create_table(char **av, t_philo **lst, t_data *data);

@@ -56,3 +56,19 @@ void	ft_usleep(int time)
 	while (ft_gettime() - start <= time)
 		usleep(100);
 }
+
+void	free_stc(t_philo *philos)
+{
+	t_philo	*back_up;
+
+	while (philos)
+	{
+		back_up = philos->next;
+		sem_close(philos->data->print);
+		sem_close(philos->data->fork);
+		free(philos);
+		philos = back_up;
+		if (philos && !philos->next)
+			free(philos->data);
+	}
+}

@@ -54,7 +54,7 @@ void	routine(void *philos)
 		thinking(back_up);
 	}
 	if (back_up->data->satiety == 1)
-		exit(1);
+		ft_exit(1, back_up->data->head);
 	if (back_up->data->if_die == 1)
-		exit(0);
+		ft_exit(0, back_up->data->head);
 }

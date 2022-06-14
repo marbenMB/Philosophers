@@ -32,16 +32,11 @@ void	loop(t_philo *philos)
 				kill(node->pid, SIGKILL);
 				node = node->next;
 			}
-			sem_close(node->data->fork);
-			sem_close(node->data->print);
-			sem_unlink("fork");
-			exit (0);
+			ft_exit(0, philos->data->head);
 		}
 		else
 			philos = philos->next;
 	}
-	sem_close(node->data->fork);
-	sem_close(node->data->print);
 }
 
 int	main(int ac, char **av)

@@ -49,19 +49,15 @@ void	check_satiety(void *philo)
 		if ((ft_gettime()) - node->last_meal >= node->data->t_die)
 		{
 			node->data->if_die = 1;
+			print_stamp(DIE_STMP,ft_gettime() - node->data->t_start, node);
 			exit(0);
 		}
+		usleep(50);
 	}
 }
 
-// while (philo)
-// {
-
-// // waitpid(-1, &r, 0);
-// if (r == 0)
-// {
-// 	while ()
-// 	kill()
-// }
-// philo = philo->next;
-// }
+void	ft_exit(int	status, t_philo *lst)
+{
+	free_stc(lst);
+	exit(status);
+}
