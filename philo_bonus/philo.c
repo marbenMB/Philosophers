@@ -6,14 +6,11 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:47 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 18:58:34 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:21:44 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-// TODO : algo -> forking -> create a thread in every process that loops to check if philo eats max_meals (-> exit(n)) or the philo is died (-> exit(m)); -> Waitpid(-1, &status, NULL);
-// TODO : if the status is equivalent to died philo exit -> kill all process || equivalent that the philo eats max_meals -> wait others and so one
 
 void	loop(t_philo *philos)
 {

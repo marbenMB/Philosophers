@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 20:15:11 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/14 17:21:33 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	error_null(void);
 //	***********		Check Functions	*********** :
 int		check_args(int ac, char **av);
 void	check_satiety(void *philo);
-void	ft_exit(int	status, t_philo *lst);
+void	ft_exit(int status, t_philo *lst);
 
 //	***********		Utils Functions	*********** :
 void	print_stamp(char *str, long time, t_philo *philo);
