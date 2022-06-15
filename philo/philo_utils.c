@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:11:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/15 19:08:48 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/15 20:50:42 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	philos_birth(t_philo **philos)
 	t_philo	*head;
 
 	head = *philos;
-	// (*philos)->data->t_start = ft_gettime();
 	while (head)
 	{
 		if (pthread_create(&(head->thread), NULL, (void *)routine, head))
