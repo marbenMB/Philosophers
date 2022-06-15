@@ -59,7 +59,7 @@ void	philos_birth(t_philo **philos)
 	t_philo	*head;
 
 	head = *philos;
-	(*philos)->data->t_start = ft_gettime();
+	// (*philos)->data->t_start = ft_gettime();
 	while (head)
 	{
 		if (pthread_create(&(head->thread), NULL, (void *)routine, head))

@@ -36,8 +36,8 @@ int	data_init(int ac, char **av, t_data **data)
 	(*data)->t_start = 0;
 	sem_unlink("fork");
 	sem_unlink("print");
-	(*data)->fork = sem_open("fork", O_CREAT, 666, (*data)->nbr_philo);
-	(*data)->print = sem_open("print", O_CREAT, 666, 1);
+	(*data)->fork = sem_open("fork",  O_CREAT, S_IRWXU, (*data)->nbr_philo);
+	(*data)->print = sem_open("print",  O_CREAT, S_IRWXU, 1);
 	return (0);
 }
 
@@ -61,6 +61,7 @@ void	philos_birth(t_philo **philos)
 	t_philo	*head;
 
 	head = *philos;
+	head->data->t_start = ft_gettime();
 	while (head)
 	{
 		head->pid = fork();
@@ -68,7 +69,6 @@ void	philos_birth(t_philo **philos)
 			return ;
 		if (head->pid == 0)
 		{
-			head->data->t_start = ft_gettime();
 			head->last_meal = ft_gettime();
 			routine(head);
 		}

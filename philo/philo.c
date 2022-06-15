@@ -12,10 +12,6 @@
 
 #include "philo.h"
 
-// TODO : ft_gettime();
-// TODO : gettimeofday(); => the starting time
-// TODO : put a mutex to be locked the printing function if a philo is died
-
 void	loop(t_philo *philos)
 {
 	while (1)
