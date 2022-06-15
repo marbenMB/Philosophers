@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:38 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/08 10:16:55 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:05:35 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	ft_putendl_fd(char *s, int fd)
 	ft_putchar_fd('\n', fd);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi_max(const char *str)
 {
-	int	num;
-	int	signe;
+	long	num;
+	int		signe;
 
 	num = 0;
 	signe = 1;
@@ -62,6 +62,8 @@ int	ft_atoi(const char *str)
 	while (*str >= 48 && *str <= 57)
 	{
 		num = num * 10 + *str - 48;
+		if ((num * signe) < INT_MIN || (num * signe) > INT_MAX)
+			return (-1);
 		str++;
 	}
 	return (num * signe);
