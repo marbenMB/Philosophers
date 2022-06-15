@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:10:53 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/14 17:21:33 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:14:05 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_philo
 
 //	***********		Libft Functions	*********** :
 int		ft_isdigit(int c);
-int		ft_atoi(const char *str);
+int		ft_atoi_max(const char *str);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
@@ -78,6 +78,7 @@ void	ft_lstadd_back(t_philo **lst, t_philo *new);
 int		error_usage(void);
 int		error_arg(char *arg);
 void	error_null(void);
+void	error_int(void);
 
 //	***********		Check Functions	*********** :
 int		check_args(int ac, char **av);

@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:04:12 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 18:58:17 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:14:49 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ int	null_arg(t_data *data)
 			|| !data->t_sleep || data->max_meals == 0)
 	{
 		error_null();
+		return (1);
+	}
+	if (data->nbr_philo == -1 || data->t_die == -1 || data->t_eat == -1 \
+			|| data->t_sleep == -1 || data->max_meals == 0)
+	{
+		error_int();
 		return (1);
 	}
 	return (0);

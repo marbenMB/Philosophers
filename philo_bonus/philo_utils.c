@@ -6,7 +6,7 @@
 /*   By: mbenbajj <mbenbajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 03:11:01 by mbenbajj          #+#    #+#             */
-/*   Updated: 2022/06/13 20:15:24 by mbenbajj         ###   ########.fr       */
+/*   Updated: 2022/06/15 19:15:06 by mbenbajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	data_init(int ac, char **av, t_data **data)
 	if (!(*data))
 		return (1);
 	(*data)->if_die = 0;
-	(*data)->nbr_philo = ft_atoi(av[1]);
-	(*data)->t_die = ft_atoi(av[2]);
-	(*data)->t_eat = ft_atoi(av[3]);
-	(*data)->t_sleep = ft_atoi(av[4]);
+	(*data)->nbr_philo = ft_atoi_max(av[1]);
+	(*data)->t_die = ft_atoi_max(av[2]);
+	(*data)->t_eat = ft_atoi_max(av[3]);
+	(*data)->t_sleep = ft_atoi_max(av[4]);
 	if (ac == 6)
-		(*data)->max_meals = ft_atoi(av[5]);
+		(*data)->max_meals = ft_atoi_max(av[5]);
 	else if (ac == 5)
 		(*data)->max_meals = -1;
 	(*data)->satiety = 0;
@@ -47,7 +47,7 @@ void	create_table(char **av, t_philo **lst, t_data *data)
 	t_philo	*node;
 
 	i = 0;
-	while (++i <= ft_atoi(av[1]))
+	while (++i <= ft_atoi_max(av[1]))
 	{
 		node = ft_lstnew(i, data);
 		ft_lstadd_back(lst, node);
