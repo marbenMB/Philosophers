@@ -17,11 +17,14 @@ CFLAGS = -Wall -Wextra -Werror -pthread
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) philo.h
-	cc $(CFLAGS) $(SRC) -o $(NAME) -g
+$(NAME) : $(OBJ)
+	cc $(CFLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.c philo.h
+	cc $(CFLAGS) -c $< -o $@
 
 clean :
-	rm $(OBJ)
+	rm -f $(OBJ)
 
 fclean :
 	rm -rf $(OBJ) $(NAME) philo.dSYM
